@@ -1,0 +1,31 @@
+<div class="col-md-12" ng-controller="HomeCtrl">
+<div class="container">
+<div class="page-header text-center">  
+<h1>News Room</h1>
+</div><br/><br/>
+<div ng-hide="itemadd">
+<input type="submit" class="btn btn-block btn-lg btn-success" value="Add News" ng-click="itemadd=true" />
+</div>
+<div ng-show="itemadd">
+ <input type="submit" class="btn btn-block btn-lg btn-info" value="Cancel" ng-click="itemadd=false"/><br/>
+ <label for="title">Add Title:</label>
+<input type="text" class="form-control" id="title" placeholder="Title" ng-model="news.title"/>
+<label for="description">Add Description:</label>
+<input type="text" class="form-control" id="description" placeholder="Description" ng-model="news.description"/>
+ <input type="submit" class="btn btn-block btn-lg btn-primary" value="Save" ng-click="add(news)"/>
+</div><br/><br/>
+<div ng-repeat="new in newsData	|	orderBy:'voteCount'">
+<div class="panel panel-default">
+  <div class="panel-heading"><strong>{{new.title}}</strong>
+  <div style="margin-left:1000px;">
+  <button type="submit" class="btn btn-info btn-xs" ng-click="up(new)"><span class="glyphicon glyphicon-arrow-up" ></span></button>
+  <button type="submit" class="btn btn-info btn-xs" ng-click="down(new)"><span class="glyphicon glyphicon-arrow-down" ></span></button>
+  <span class="badge">{{new.voteCount}}</span></div>
+  </div>
+  <div class="panel-body">
+    {{new.description}}
+  </div>
+  </div>
+</div>
+</div>
+</div>
