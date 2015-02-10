@@ -11,16 +11,16 @@
  <label for="title">Add Title:</label>
 <input type="text" class="form-control" id="title" placeholder="Title" ng-model="news.title"/>
 <label for="description">Add Description:</label>
-<input type="text" class="form-control" id="description" placeholder="Description" ng-model="news.description"/>
+<input type="text" class="form-control" id="description" placeholder="Description" ng-model="news.description"/><br/>
  <input type="submit" class="btn btn-block btn-lg btn-primary" value="Save" ng-click="add(news)"/>
 </div><br/><br/>
-<div ng-repeat="new in newsData	|	orderBy:'voteCount'">
+<div ng-repeat="new in newsData">
 <div class="panel panel-default">
   <div class="panel-heading"><strong>{{new.title}}</strong>
   <div style="margin-left:1000px;">
-  <button type="submit" class="btn btn-info btn-xs" ng-click="up(new)"><span class="glyphicon glyphicon-arrow-up" ></span></button>
-  <button type="submit" class="btn btn-info btn-xs" ng-click="down(new)"><span class="glyphicon glyphicon-arrow-down" ></span></button>
-  <span class="badge">{{new.voteCount}}</span></div>
+  <button type="submit" class="btn btn-info btn-xs" ng-click="up(new,newsData)"><span class="glyphicon glyphicon-arrow-up" ></span></button>
+  <button type="submit" class="btn btn-info btn-xs" ng-click="down(new,newsData)"><span class="glyphicon glyphicon-arrow-down" ></span></button>
+  <span ng-class="{'true':'btn btn-success btn-xs','false':'btn btn-primary btn-xs'}[new.voteCount > -1]">{{new.voteCount}}</span></div>
   </div>
   <div class="panel-body">
     {{new.description}}
